@@ -13,7 +13,7 @@
         />
 
         <q-toolbar-title>
-          CaterBook
+          CaterBook 
         </q-toolbar-title>
 
       </q-toolbar>

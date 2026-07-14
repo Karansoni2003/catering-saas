@@ -6,7 +6,7 @@
       <q-btn
         class="q-mt-md"
         color="primary"
-        to="/signup"
+        to="/auth/signup"
         label="Sign Up"
         no-caps
       />
@@ -14,7 +14,7 @@
       <q-btn
         class="q-mt-md"
         color="primary"
-        to="/login"
+        to="/auth/login"
         label="Login"
         no-caps
       />
