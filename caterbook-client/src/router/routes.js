@@ -18,6 +18,12 @@ const routes = [
   {
     path: '/app',
     component: () => import('@/layouts/MainLayout.vue'),
+
+ meta: {
+    requiresAuth: true
+  },
+
+
     children: [
       { path: '', component: () => import('@/pages/IndexPage.vue') },
       { path: 'dashboard', component: () => import('@/pages/DashboardPage.vue') },

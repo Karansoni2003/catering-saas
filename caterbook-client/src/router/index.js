@@ -7,6 +7,8 @@ import {
 } from 'vue-router'
 
 import routes from './routes.js'
+import { supabase } from '../boot/supabase'
+
 
 /*
  * If not building with SSR mode, you can
@@ -31,6 +33,28 @@ export default defineRouter((/* { store, ssrContext } */) => {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(import.meta.env.QUASAR_VUE_ROUTER_BASE)
   })
+
+  Router.beforeEach(async (to) => {
+
+      console.log("Guard Running", to.path)
+
+  // Agar route protected nahi hai to allow
+  if (!to.meta.requiresAuth) {
+    return true
+  }
+
+  // Current session check karo
+  const { data: { session } } = await supabase.auth.getSession()
+
+  // Session nahi hai to login page
+  if (!session) {
+    return '/auth/login'
+  }
+
+  // Session hai to allow
+  return true
+
+})
 
   return Router
 })
